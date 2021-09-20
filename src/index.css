@@ -1,3 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+  @apply bg-white rounded-2xl overflow-hidden shadow-lg;
+}
+
+html {
+  font-family: "Rubik", sans-serif;
+}
+main {
+  @apply h-screen flex flex-col;
+}
+
+header {
+  @apply h-[300px] z-10;
+  @apply bg-no-repeat bg-cover relative;
+  background-image: url("./images/pattern-bg.png");
+
+  > div {
+    @apply flex flex-col items-center gap-6 w-full p-4 absolute;
+  }
+
+  h1 {
+    @apply text-white text-2xl text-center;
+  }
+
+  form {
+    @apply text-lg w-full;
+
+    label {
+      @apply flex items-center relative;
+      @extend .card;
+    }
+
+    input[type="search"] {
+      @apply w-full h-full bg-transparent p-4 outline-none;
+    }
+
+    button {
+      @apply absolute right-0 flex justify-center items-center;
+      @apply bg-black text-white h-full w-1/6;
+    }
+  }
+
+  output {
+    @extend .card;
+    @apply w-full;
+
+    ul {
+      @apply flex flex-col gap-4 p-8 text-center;
+    }
+
+    li div {
+      @apply flex flex-col gap-2 text-xl;
+
+      *:nth-child(1) {
+        @apply text-xs font-black text-gray-400;
+      }
+    }
+  }
+}
+
+.map {
+  @apply w-full flex-1 z-0;
+}
