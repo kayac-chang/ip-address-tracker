@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { map, tileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+
+const URL_TEMP = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 export function Map() {
   const ref = useRef(null);
@@ -8,15 +10,13 @@ export function Map() {
   useEffect(() => {
     if (!ref.current) return;
 
-    const element = ref.current;
+    const instance = map(ref.current).setView([51.505, -0.09], 17);
 
-    const map = L.map(element).setView([51.505, -0.09], 17);
+    tileLayer(URL_TEMP, {
+      //
+    }).addTo(instance);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
-      map
-    );
-
-    return () => void map.remove();
+    return () => void instance.remove();
   }, []);
 
   return <div className="map" ref={ref} />;
