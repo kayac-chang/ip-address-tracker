@@ -1,13 +1,24 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Geolocation, Location } from "./api";
 import { Map, Search, Data } from "./components";
 import { isIP, isFQDN } from "validator";
+import { URLSearchParams } from "./utils";
+
+function search(terms: string) {
+  if (isFQDN(terms)) return Geolocation.search({ domain: terms });
+
+  if (isIP(terms)) return Geolocation.search({ ipAddress: terms });
+
+  return Geolocation.search();
+}
 
 function App() {
   const [location, setLocation] = useState<Location>();
 
   useEffect(() => {
-    Geolocation.search().then(setLocation);
+    const terms = URLSearchParams(window.location.search).search || "";
+
+    search(terms).then(setLocation);
   }, []);
 
   return (
@@ -16,15 +27,7 @@ function App() {
         <div>
           <h1>IP Address Tracker</h1>
 
-          <Search
-            onChange={(terms) => {
-              if (isFQDN(terms))
-                Geolocation.search({ domain: terms }).then(setLocation);
-
-              if (isIP(terms))
-                Geolocation.search({ ipAddress: terms }).then(setLocation);
-            }}
-          />
+          <Search onChange={search} />
 
           <output>
             <ul>

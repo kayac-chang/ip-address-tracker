@@ -15,20 +15,21 @@ main {
 }
 
 header {
-  @apply h-[300px] z-10;
-  @apply bg-no-repeat bg-cover relative;
+  @apply h-[30vh] z-10;
+  @apply bg-no-repeat bg-cover relative flex justify-center;
   background-image: url("./images/pattern-bg.png");
 
   > div {
-    @apply flex flex-col items-center gap-6 w-full p-4 absolute;
+    @apply container flex flex-col items-center gap-6 p-4 absolute;
+    @apply md:gap-8 md:py-10;
   }
 
   h1 {
-    @apply text-white text-2xl text-center;
+    @apply text-white text-2xl md:text-3xl text-center;
   }
 
   form {
-    @apply text-lg w-full;
+    @apply text-lg w-full md:w-[40vw];
 
     label {
       @apply flex items-center relative;
@@ -51,6 +52,11 @@ header {
 
     ul {
       @apply flex flex-col gap-4 p-8 text-center;
+      @apply md:flex-row md:text-left md:divide-x;
+
+      > * {
+        @apply flex-1 md:pl-8;
+      }
     }
 
     li div {
