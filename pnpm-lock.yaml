@@ -4,6 +4,7 @@ specifiers:
   '@types/leaflet': ^1.7.5
   '@types/react': ^17.0.0
   '@types/react-dom': ^17.0.0
+  '@types/validator': github:types/validator
   '@vitejs/plugin-react-refresh': ^1.3.1
   leaflet: ^1.7.1
   postcss: ^8.3.6
@@ -11,20 +12,23 @@ specifiers:
   react: ^17.0.0
   react-dom: ^17.0.0
   tailwindcss: ^2.2.15
-  typescript: ^4.3.2
+  typescript: ^4.4.3
+  validator: ^13.6.0
   vitawind: ^1.2.7
   vite: ^2.4.4
   vite-plugin-react-svg: ^0.2.0
 
 dependencies:
-  '@types/leaflet': 1.7.5
   leaflet: 1.7.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  validator: 13.6.0
 
 devDependencies:
+  '@types/leaflet': 1.7.5
   '@types/react': 17.0.21
   '@types/react-dom': 17.0.9
+  '@types/validator': github.com/types/validator/2fa642f6b0c39ccebf505bb7a2447817dd809251
   '@vitejs/plugin-react-refresh': 1.3.6
   postcss: 8.3.6
   precss: 4.0.0
@@ -437,13 +441,13 @@ packages:
 
   /@types/geojson/7946.0.8:
     resolution: {integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==}
-    dev: false
+    dev: true
 
   /@types/leaflet/1.7.5:
     resolution: {integrity: sha512-+Myo00Yb5OuvUyrH+vUwn9DRgOaBJsF/etIMdMcNhWGBMo58Mo1cxLInvCd0ZpvItju/AeDYFB/Od2pLiHB3VA==}
     dependencies:
       '@types/geojson': 7946.0.8
-    dev: false
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -2413,6 +2417,11 @@ packages:
       object.getownpropertydescriptors: 2.1.2
     dev: true
 
+  /validator/13.6.0:
+    resolution: {integrity: sha512-gVgKbdbHgtxpRyR8K0O6oFZPhhB5tT1jeEHZR0Znr9Svg03U0+r9DXWMrnRAB+HtCStDQKlaIZm42tVsVjqtjg==}
+    engines: {node: '>= 0.10'}
+    dev: false
+
   /vitawind/1.2.8_postcss@8.3.6:
     resolution: {integrity: sha512-QDaIG1/Z9mE7qLv7eYRNfe/RmJSgEbBiDrHlaa/02fX5PWMRTQzZY4LnJ4m9WCOEZhOUX9bX/hfpo7e1vZXByg==}
     engines: {node: '>=12.13.0'}
@@ -2475,4 +2484,10 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
+    dev: true
+
+  github.com/types/validator/2fa642f6b0c39ccebf505bb7a2447817dd809251:
+    resolution: {tarball: https://codeload.github.com/types/validator/tar.gz/2fa642f6b0c39ccebf505bb7a2447817dd809251}
+    name: '@types/validator'
+    version: 7.0.0
     dev: true

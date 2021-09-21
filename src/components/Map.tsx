@@ -1,10 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { map, tileLayer } from "leaflet";
+import { icon, map, marker, tileLayer } from "leaflet";
+import ICON_LOCATION from "../images/icon-location.svg?url";
 import "leaflet/dist/leaflet.css";
+import { lerp } from "../utils";
 
 const URL_TEMP = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+const ICON = icon({ iconUrl: ICON_LOCATION });
 
-export function Map() {
+type Props = {
+  center?: [number, number];
+  zoom?: number;
+};
+export function Map({ center = [0, 0], zoom = 1 }: Props) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -12,12 +19,15 @@ export function Map() {
 
     const instance = map(ref.current).setView([51.505, -0.09], 17);
 
-    tileLayer(URL_TEMP, {
-      //
-    }).addTo(instance);
+    instance
+      .panTo(center)
+      .setZoom(lerp(instance.getMaxZoom(), instance.getMinZoom(), zoom));
+
+    tileLayer(URL_TEMP).addTo(instance);
+    marker(center, { icon: ICON }).addTo(instance);
 
     return () => void instance.remove();
-  }, []);
+  }, [center]);
 
   return <div className="map" ref={ref} />;
 }
