@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Geolocation, Location } from "./api";
 import { Map, Search, Data } from "./components";
 import { isIP, isFQDN } from "validator";
 import { URLSearchParams } from "./utils";
 
-function search(terms: string) {
-  if (isFQDN(terms)) return Geolocation.search({ domain: terms });
-
-  if (isIP(terms)) return Geolocation.search({ ipAddress: terms });
-
-  return Geolocation.search();
-}
-
 function App() {
   const [location, setLocation] = useState<Location>();
 
-  useEffect(() => {
-    const terms = URLSearchParams(window.location.search).search || "";
+  const search = useCallback(
+    (terms) => {
+      if (isFQDN(terms))
+        return Geolocation.search({ domain: terms }).then(setLocation);
 
-    search(terms).then(setLocation);
+      if (isIP(terms))
+        return Geolocation.search({ ipAddress: terms }).then(setLocation);
+
+      return Geolocation.search().then(setLocation);
+    },
+    [setLocation]
+  );
+
+  useEffect(() => {
+    search(URLSearchParams(window.location.search).search || "");
   }, []);
 
   return (
