@@ -31,7 +31,7 @@ header {
   form {
     @apply text-lg w-full md:w-[40vw];
 
-    label {
+    .search {
       @apply flex items-center relative;
       @extend .card;
     }
@@ -46,7 +46,7 @@ header {
     }
   }
 
-  output {
+  .output {
     @extend .card;
     @apply w-full;
 

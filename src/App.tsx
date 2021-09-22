@@ -32,7 +32,7 @@ function App() {
 
           <Search onChange={search} />
 
-          <output>
+          <div className="output">
             <ul>
               {location &&
                 [
@@ -46,7 +46,7 @@ function App() {
                   </li>
                 ))}
             </ul>
-          </output>
+          </div>
         </div>
       </header>
 

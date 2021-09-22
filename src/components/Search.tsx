@@ -14,10 +14,13 @@ export function Search({ onChange }: Props) {
 
   return (
     <form onSubmit={onSubmit}>
-      <label>
-        <span className="sr-only">Search</span>
+      <div className="search">
+        <label htmlFor="search" className="sr-only">
+          Search
+        </label>
 
         <input
+          id="search"
           type="search"
           name="search"
           placeholder="Search for any IP address or domain"
@@ -28,7 +31,7 @@ export function Search({ onChange }: Props) {
 
           <Icon.Arrow />
         </button>
-      </label>
+      </div>
     </form>
   );
 }
